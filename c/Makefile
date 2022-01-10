@@ -1,5 +1,5 @@
 # MCU name
-MCU = atmega328p
+MCU = uno #atmega328p
 F_CPU = 16000000
 
 # Output format. (can be srec, ihex, binary)

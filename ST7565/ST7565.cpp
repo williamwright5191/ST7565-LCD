@@ -151,7 +151,7 @@ void ST7565::drawbitmap(uint8_t x, uint8_t y,
   for (uint8_t j=0; j<h; j++) {
     for (uint8_t i=0; i<w; i++ ) {
       if (pgm_read_byte(bitmap + i + (j/8)*w) & _BV(j%8)) {
-	my_setpixel(x+i, y+j, color);
+	      my_setpixel(x+i, y+j, color);
       }
     }
   }

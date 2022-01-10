@@ -17,34 +17,34 @@ ST7565 glcd(9, 8, 7, 6, 5);
 
 // a bitmap of a 16x16 fruit icon
 const static unsigned char __attribute__ ((progmem)) logo16_glcd_bmp[]={
-0x30, 0xf0, 0xf0, 0xf0, 0xf0, 0x30, 0xf8, 0xbe, 0x9f, 0xff, 0xf8, 0xc0, 0xc0, 0xc0, 0x80, 0x00, 
-0x20, 0x3c, 0x3f, 0x3f, 0x1f, 0x19, 0x1f, 0x7b, 0xfb, 0xfe, 0xfe, 0x07, 0x07, 0x07, 0x03, 0x00, };
+  0x30, 0xf0, 0xf0, 0xf0, 0xf0, 0x30, 0xf8, 0xbe, 0x9f, 0xff, 0xf8, 0xc0, 0xc0, 0xc0, 0x80, 0x00, 
+0x20, 0x3c, 0x3f, 0x3f, 0x1f, 0x19, 0x1f, 0x7b, 0xfb, 0xfe, 0xfe, 0x07, 0x07, 0x07, 0x03, 0x00,
+};
 
 // The setup() method runs once, when the sketch starts
 void setup()   {                
   Serial.begin(9600);
 
-#ifdef __AVR__
-  Serial.print(freeRam());
-#endif
-
+  
   // turn on backlight
   pinMode(BACKLIGHT_LED, OUTPUT);
   digitalWrite(BACKLIGHT_LED, LOW);
 
   // initialize and set the contrast to 0x18
-  glcd.begin(0x18);
+  glcd.begin(0x00);
 
   glcd.display(); // show splashscreen
   delay(2000);
   glcd.clear();
 
+  
   // draw a single pixel
-  glcd.setpixel(10, 10, BLACK);
+  glcd.setpixel(32, 32, BLACK);
   glcd.display();        // show the changes to the buffer
   delay(2000);
   glcd.clear();
 
+  /*
   // draw many lines
   testdrawline();
   glcd.display();       // show the lines
@@ -89,11 +89,21 @@ void setup()   {
 
   // draw a bitmap icon and 'animate' movement
   testdrawbitmap(logo16_glcd_bmp, LOGO16_GLCD_HEIGHT, LOGO16_GLCD_WIDTH);
+  */
 }
 
 
 void loop()                     
-{}
+{
+  
+  testdrawrect();
+  glcd.display();
+  delay(2000);
+  glcd.clear();
+  Serial.println("testing...");
+  
+  
+  }
 
 #ifdef __AVR__
 // this handy function will return the number of bytes currently free in RAM, great for debugging!   
@@ -167,7 +177,7 @@ void testdrawcircle(void) {
 
 void testdrawrect(void) {
   for (uint8_t i=0; i<64; i+=2) {
-    glcd.drawrect(i, i, 128-i, 64-i, BLACK);
+    glcd.drawrect(i, i, 64-i, 32-i, BLACK);
   }
 }
 
