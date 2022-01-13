@@ -50,7 +50,6 @@ void drawbitmap(uint8_t *buff, uint8_t x, uint8_t y,
     }
   }
 
-
 }
 
 void drawstring(uint8_t *buff, uint8_t x, uint8_t line, uint8_t *c) {
@@ -66,7 +65,6 @@ void drawstring(uint8_t *buff, uint8_t x, uint8_t line, uint8_t *c) {
     if (line >= (LCDHEIGHT/8))
       return;        // ran out of space :(
   }
-
 }
 
 void drawchar(uint8_t *buff, uint8_t x, uint8_t line, uint8_t c) {

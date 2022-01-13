@@ -36,7 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
   #define _BV(bit) (1<<(bit))
 #endif
 
-
+#include <stdint.h>
 #include <stdlib.h>
 
 #include "ST7565.h"

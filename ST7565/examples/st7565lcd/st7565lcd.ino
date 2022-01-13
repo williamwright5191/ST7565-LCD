@@ -95,12 +95,12 @@ void setup()   {
 
 void loop()                     
 {
-  
+  Serial.println("testing1...");
   testdrawrect();
   glcd.display();
   delay(2000);
-  glcd.clear();
-  Serial.println("testing...");
+  glcd.clear_buffer();
+  Serial.println("testing2...");
   
   
   }
@@ -176,8 +176,10 @@ void testdrawcircle(void) {
 
 
 void testdrawrect(void) {
+  Serial.println("testing3...");
   for (uint8_t i=0; i<64; i+=2) {
     glcd.drawrect(i, i, 64-i, 32-i, BLACK);
+    Serial.println("testing "+i);
   }
 }
 
